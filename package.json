@@ -1,0 +1,20 @@
+{
+  "name": "cnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HappyJeannie/cnode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HappyJeannie/cnode/issues"
+  },
+  "homepage": "https://github.com/HappyJeannie/cnode#readme"
+}
