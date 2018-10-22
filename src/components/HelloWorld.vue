@@ -80,6 +80,8 @@
         </a>
       </li>
     </ul>
+    <h2>{{$route.params.msg}}</h2>
+    <button @click='getData'>获取豆瓣数据</button>
   </div>
 </template>
 
@@ -88,7 +90,24 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      path: ''
+    }
+  },
+  created: function () {
+  },
+  methods: {
+    getData () {
+      this.$http.get(
+        'http://api.apiopen.top/musicRankingsDetails',{
+          params:{
+            type: 1
+          }
+        }
+      )
+        .then(res => {
+          console.log(res)
+        })
     }
   }
 }
