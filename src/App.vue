@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <headnav></headnav>
     <router-view/>
+    <footbar></footbar>
   </div>
 </template>
 
 <script>
 import headnav from '@/components/header'
+import footbar from '@/components/footer'
+import './assets/css/normalize.css'
 export default {
   name: 'App',
   components: {
-    headnav
+    headnav,
+    footbar
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body{
+    background: #e1e1e1;
+  }
 </style>
