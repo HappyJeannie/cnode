@@ -4,13 +4,13 @@
       <li v-for="item in topiclist" :key="item.id">
         <div class="avatar">
           <a href="#">
-            <img src="https://gravatar.com/avatar/7d3c19500e2ed481fea3ab09f91e3856?s=48" alt="">
+            <img :src="item.author.avatar_url" alt="">
           </a>
         </div>
         <div class="reply">
-          <span class="relpies">12</span>
+          <span class="relpies">{{item.reply_count}}</span>
           <span>/</span>
-          <span class="clicked">1234</span>
+          <span class="clicked">{{item.visit_count}}</span>
         </div>
         <div class="title">
           <span class="type active">置顶</span>
@@ -31,28 +31,7 @@ export default {
   name: 'list',
   props: ['topiclist'],
   data: function () {
-    return {
-      list: [
-        {
-          'num': 'abc1'
-        },
-        {
-          'num': 'abc2'
-        },
-        {
-          'num': 'abc3'
-        },
-        {
-          'num': 'abc4'
-        },
-        {
-          'num': 'abc5'
-        },
-        {
-          'num': 'abc6'
-        }
-      ]
-    }
+    return {}
   }
 }
 </script>

@@ -20,7 +20,7 @@ import page from './../components/common/pagination'
 import {getTopics} from './../api/request.js'
 export default {
   name: 'postList',
-  data(){
+  data () {
     return {
       topicList: []
     }
@@ -38,8 +38,6 @@ export default {
       limit: 10
     })
       .then((res) => {
-        console.log('获取数据')
-        console.log(res)
         this.topicList = res.data.data
       })
   },
