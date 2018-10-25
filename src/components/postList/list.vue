@@ -15,7 +15,7 @@
           </div>
           <div class="title">
             <span :class="[{active:item.top}, 'type']">{{item.tabName}}</span>
-            <router-link :to="{path: '/topic/'+item.id}">{{item.title}}</router-link>
+            <router-link :to="{path: '/detail/'+item.id}">{{item.title}}</router-link>
           </div>
         </div>
         <div class="timeInfo">
@@ -26,8 +26,6 @@
             </router-link>
           </div>
         </div>
-        
-        
       </li>
     </ul>
   </div>
@@ -159,10 +157,8 @@ export default {
             text-overflow: ellipsis;
             white-space: nowrap;
             display: block;
-           // max-width: 480px;
           }
         }
-        
       }
     }
   }

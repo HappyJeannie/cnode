@@ -2,11 +2,13 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="logo">
-        <img src="./../assets/img/logo.svg" alt="logo">
+        <router-link to='/'>
+          <img src="./../assets/img/logo.svg" alt="logo">
+        </router-link>
       </div>
       <nav>
         <ul>
-          <li><a href="#">首页</a></li>
+          <li><router-link to="/">首页</router-link></li>
           <li><a href="#">新手入门</a></li>
           <li><a href="#">API</a></li>
           <li><a href="#">关于</a></li>

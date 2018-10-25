@@ -35,14 +35,14 @@ export default {
     this.queryData({})
   },
   methods: {
-    changeData(type){
+    changeData (type) {
       this.queryData(type)
     },
-    queryData(para){
+    queryData (para) {
       getTopics(para)
-      .then((res) => {
-        this.topicList = res.data.data
-      })
+        .then((res) => {
+          this.topicList = res.data.data
+        })
     }
   }
 }

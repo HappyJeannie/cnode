@@ -20,6 +20,19 @@ function getTopics (obj) {
       })
   })
 }
+// 获取话题详情
+function getTopicDetail (id) {
+  return new Promise((resolve, reject) => {
+    axios.get(baseURL + '/topic/' + id)
+      .then((res) => {
+        resolve(res)
+      })
+      .catch((err) => {
+        reject(err)
+      })
+  })
+}
 export {
-  getTopics
+  getTopics,
+  getTopicDetail
 }

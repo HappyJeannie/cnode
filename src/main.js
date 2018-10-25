@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import Vuex from 'vuex'
+import './assets/css/base.css'
 
 Vue.use(Vuex)
 Vue.prototype.$http = axios

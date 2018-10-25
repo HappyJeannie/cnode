@@ -12,7 +12,7 @@
 <script>
 export default {
   name: 'tab',
-  data(){
+  data () {
     return {
       curTab: 'all',
       tabList: [
@@ -40,9 +40,9 @@ export default {
     }
   },
   methods: {
-    changeTab(type){
+    changeTab (type) {
       this.curTab = type
-      this.$emit('querydata',{tab: type})
+      this.$emit('querydata', {tab: type})
     }
   }
 }
