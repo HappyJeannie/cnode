@@ -63,7 +63,8 @@ export default {
       .lf{
         flex: 1;
         background: #fff;
-        border-radius: 0 0 3px 3px
+        border-radius: 0 0 3px 3px;
+        padding-bottom: 20px;
       }
       .rt{
         width: 290px;

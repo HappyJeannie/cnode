@@ -3,9 +3,9 @@
     <ul>
       <li v-for="item in list" :key="item.id">
         <div class="avatar">
-          <a href="#">
+          <router-link :to="{path: '/user/'+item.author.loginname}">
             <img :src="item.author.avatar_url" alt="">
-          </a>
+          </router-link>
         </div>
         <div class="reply">
           <span class="relpies">{{item.reply_count}}</span>
@@ -13,21 +13,21 @@
           <span class="clicked">{{item.visit_count}}</span>
         </div>
         <div class="title">
-          <span class="type active">置顶</span>
-          <a href="#">{{item.title}}</a>
+          <span :class="[{active:item.top}, 'type']">{{item.tabName}}</span>
+          <router-link :to="{path: '/topic/'+item.id}">{{item.title}}</router-link>
         </div>
         <div class="recent">
-          <a href="#">
-            <img src="https://gravatar.com/avatar/7d3c19500e2ed481fea3ab09f91e3856?s=48" alt="">
+          <router-link :to="{path: '/topic/'+ item.id}">
+            <img :src="item.author.avatar_url" alt="">
             <span class="time">{{item.last_reply_at}}</span>
-          </a>
+          </router-link>
         </div>
       </li>
     </ul>
   </div>
 </template>
 <script>
-import {formatDate} from './../../utils/util.js'
+import {formatDate, getTab} from './../../utils/util.js'
 export default {
   name: 'list',
   props: ['topiclist'],
@@ -35,9 +35,10 @@ export default {
     return {}
   },
   computed: {
-    list: function() {
+    list: function () {
       this.topiclist.map((item) => {
         item.last_reply_at = formatDate(item.last_reply_at)
+        item.tabName = getTab(item.tab)
       })
       return this.topiclist
     }

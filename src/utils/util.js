@@ -22,6 +22,31 @@ function formatDate (time) {
   return tips
 }
 
+// 根据 tab 类型转换至响应的文案
+// share : 分享
+// ask ： 问答
+// job : 招聘
+// good ： 精华
+function getTab (type) {
+  let tab = ''
+  switch (type) {
+    case 'share' :
+      tab = '分享'
+      break
+    case 'ask' :
+      tab = '问答'
+      break
+    case 'job' :
+      tab = '招聘'
+      break
+    case 'good' :
+      tab = '精华'
+      break
+  }
+  return tab
+}
+
 export {
-  formatDate
+  formatDate,
+  getTab
 }
