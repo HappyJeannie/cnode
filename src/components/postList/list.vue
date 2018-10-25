@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
     <ul>
-      <li v-for="item in topiclist" :key="item.id">
+      <li v-for="item in list" :key="item.id">
         <div class="avatar">
           <a href="#">
             <img :src="item.author.avatar_url" alt="">
@@ -19,7 +19,7 @@
         <div class="recent">
           <a href="#">
             <img src="https://gravatar.com/avatar/7d3c19500e2ed481fea3ab09f91e3856?s=48" alt="">
-            <span class="time">1 小时前</span>
+            <span class="time">{{item.last_reply_at}}</span>
           </a>
         </div>
       </li>
@@ -27,11 +27,20 @@
   </div>
 </template>
 <script>
+import {formatDate} from './../../utils/util.js'
 export default {
   name: 'list',
   props: ['topiclist'],
   data: function () {
     return {}
+  },
+  computed: {
+    list: function() {
+      this.topiclist.map((item) => {
+        item.last_reply_at = formatDate(item.last_reply_at)
+      })
+      return this.topiclist
+    }
   }
 }
 </script>
