@@ -1,17 +1,50 @@
 <template>
   <div class="tab">
     <ul>
-      <li class="current"><a href="#">全部</a></li>
-      <li><a href="#">精华</a></li>
-      <li><a href="#">分享</a></li>
-      <li><a href="#">问答</a></li>
-      <li><a href="#">招聘</a></li>
+      <li v-for="item in tabList" :key="item.name" :class="{current: curTab == item.name}" @click="changeTab(item.name)">
+        <a href="javascript:;">
+          {{item.tabName}}
+        </a>
+      </li>
     </ul>
   </div>
 </template>
 <script>
 export default {
-  name: 'tab'
+  name: 'tab',
+  data(){
+    return {
+      curTab: 'all',
+      tabList: [
+        {
+          tabName: '全部',
+          name: 'all'
+        },
+        {
+          tabName: '精华',
+          name: 'good'
+        },
+        {
+          tabName: '分享',
+          name: 'share'
+        },
+        {
+          tabName: '问答',
+          name: 'ask'
+        },
+        {
+          tabName: '招聘',
+          name: 'job'
+        }
+      ]
+    }
+  },
+  methods: {
+    changeTab(type){
+      this.curTab = type
+      this.$emit('querydata',{tab: type})
+    }
+  }
 }
 </script>
 <style lang="less" scoped>

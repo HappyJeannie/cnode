@@ -2,7 +2,7 @@
   <div class="main">
     <div class="container">
       <div class="lf">
-        <tab></tab>
+        <tab @querydata="changeData"></tab>
         <list :topiclist= 'topicList'></list>
         <page></page>
       </div>
@@ -32,21 +32,17 @@ export default {
     page
   },
   created () {
-    // this.getData()
-    getTopics({
-      page: 1,
-      limit: 10
-    })
+    this.queryData({})
+  },
+  methods: {
+    changeData(type){
+      this.queryData(type)
+    },
+    queryData(para){
+      getTopics(para)
       .then((res) => {
         this.topicList = res.data.data
       })
-  },
-  methods: {
-    getData () {
-      this.$http.get('https://cnodejs.org/api/v1/topics')
-        .then((res) => {
-          console.log(res)
-        })
     }
   }
 }
@@ -61,14 +57,15 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       .lf{
-        flex: 1;
         background: #fff;
         border-radius: 0 0 3px 3px;
         padding-bottom: 20px;
+        width: calc(100% - 300px);
       }
       .rt{
         width: 290px;
         margin-left: 15px;
+        min-width: 290px;
       }
     }
   }

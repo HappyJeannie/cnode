@@ -2,26 +2,32 @@
   <div class="tab">
     <ul>
       <li v-for="item in list" :key="item.id">
-        <div class="avatar">
-          <router-link :to="{path: '/user/'+item.author.loginname}">
-            <img :src="item.author.avatar_url" alt="">
-          </router-link>
+        <div class="info">
+          <div class="avatar">
+            <router-link :to="{path: '/user/'+item.author.loginname}">
+              <img :src="item.author.avatar_url" alt="">
+            </router-link>
+          </div>
+          <div class="reply">
+            <span class="relpies">{{item.reply_count}}</span>
+            <span>/</span>
+            <span class="clicked">{{item.visit_count}}</span>
+          </div>
+          <div class="title">
+            <span :class="[{active:item.top}, 'type']">{{item.tabName}}</span>
+            <router-link :to="{path: '/topic/'+item.id}">{{item.title}}</router-link>
+          </div>
         </div>
-        <div class="reply">
-          <span class="relpies">{{item.reply_count}}</span>
-          <span>/</span>
-          <span class="clicked">{{item.visit_count}}</span>
+        <div class="timeInfo">
+          <div class="recent">
+            <router-link :to="{path: '/topic/'+ item.id}">
+              <img :src="item.author.avatar_url" alt="">
+              <span class="time">{{item.last_reply_at}}</span>
+            </router-link>
+          </div>
         </div>
-        <div class="title">
-          <span :class="[{active:item.top}, 'type']">{{item.tabName}}</span>
-          <router-link :to="{path: '/topic/'+item.id}">{{item.title}}</router-link>
-        </div>
-        <div class="recent">
-          <router-link :to="{path: '/topic/'+ item.id}">
-            <img :src="item.author.avatar_url" alt="">
-            <span class="time">{{item.last_reply_at}}</span>
-          </router-link>
-        </div>
+        
+        
       </li>
     </ul>
   </div>
@@ -58,6 +64,38 @@ export default {
         height: 50px;
         &:first-child{
           border: none;
+        }
+        .info{
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+          width: calc(100% - 110px);
+        }
+        .timeInfo{
+          width: 100px;
+          margin-left: 10px;
+          .recent{
+            a{
+              display: block;
+              width: 100%;
+              height: 30px;
+              line-height: 30px;
+              img{
+                height: 18px;
+                width: 18px;
+                vertical-align: middle;
+                border-radius: 3px;
+              }
+              span{
+                text-align: right;
+                min-width: 50px;
+                display: inline-block;
+                white-space: nowrap;
+                color: #778087;
+                font-size: 11px;
+              }
+            }
+          }
         }
         .avatar{
           width: 30px;
@@ -98,6 +136,7 @@ export default {
           flex-direction: row;
           display: flex;
           align-items: center;
+          width: 80%;
           .type{
             background-color: #e5e5e5;
             color: #999;
@@ -117,36 +156,13 @@ export default {
           }
           a{
             overflow: hidden;
-            // text-overflow: ellipsis;
-            // white-space: nowrap;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             display: block;
            // max-width: 480px;
           }
         }
-        .recent{
-          width: 100px;
-          margin-left: 10px;
-          a{
-            display: block;
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            img{
-              height: 18px;
-              width: 18px;
-              vertical-align: middle;
-              border-radius: 3px;
-            }
-            span{
-              text-align: right;
-              min-width: 50px;
-              display: inline-block;
-              white-space: nowrap;
-              color: #778087;
-              font-size: 11px;
-            }
-          }
-        }
+        
       }
     }
   }

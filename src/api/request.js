@@ -6,9 +6,10 @@ const baseURL = 'https://cnodejs.org/api/v1'
 function getTopics (obj) {
   let params = {
     page: 1,
-    limit: 20
+    limit: 10,
+    tab: 'job'
   }
-  params = obj || params
+  Object.assign(params, obj)
   return new Promise((resolve, reject) => {
     axios.get(baseURL + '/topics', {params: params})
       .then((res) => {
